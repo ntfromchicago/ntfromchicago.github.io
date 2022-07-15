@@ -1,0 +1,45 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="styles.css">
+		<!-- Note: The order of these scripts is important: -->
+		<!-- get-temps.js should always be last!!! -->
+		<script type="text/javascript" src="main-map-us-cities.js"></script>
+		<script type="text/javascript" src="midwest-cities.js"></script>
+		<script type="text/javascript" src="us-cities.js"></script>
+		<script type="text/javascript" src="world-cities.js"></script>
+		<script type="text/javascript" src="wx-icons.js"></script>
+		<script type="text/javascript" src="get-temps.js"></script>
+	</head>
+	<body>
+		<h1>Get Temperature Data</h1>
+		<p id="version">Version 1.2 | Last updated Jan. 27, 2022, 4:58 p.m. CST</p>
+		<p>Enter your API key and press Return to continue.</p>
+		<input type="text" id="apiKey" onblur="getKey()" onkeypress="enterKeyPressed(event)" size=32>
+		<div><p id="badKey">Please enter a valid key.</p></div>
+		<div id="buttonsDiv">
+			<!-- <button onclick="loopThroughCities(midwestCities, 2, document.getElementById('apiKey').value)">Get Midwest City Data</button> -->			<div>
+			<button onclick="loopThroughCities(illinoisCities, 2, document.getElementById('apiKey').value, false)">Get Illinois Data</button>
+			<button onclick="loopThroughCities(indianaCities, 2, document.getElementById('apiKey').value, false)">Get Indiana Data</button>
+			<button onclick="loopThroughCities(wisconsinCities, 2, document.getElementById('apiKey').value, false)">Get Wisconsin Data</button>
+			<button onclick="loopThroughCities(michiganCities, 2, document.getElementById('apiKey').value, false)">Get Michigan Data</button>
+			<button onclick="loopThroughCities(iowaCities, 2, document.getElementById('apiKey').value, false)">Get Iowa Data</button>
+			</div>
+		<div>
+			<button onclick="loopThroughCities(usCities, 2, document.getElementById('apiKey').value, false)">Get U.S. Data</button>
+			<button onclick="loopThroughCities(worldCities, 1, document.getElementById('apiKey').value, false)">Get World Data</button>
+		<button onclick="loopThroughCities(usCitiesMainMapStations, 1, document.getElementById('apiKey').value, true)">Main Map High/Low</button>
+		<button onclick="loopThroughCities(usCitiesMainMapStations, 2, document.getElementById('apiKey').value, true)">Main Map (Bulldog) High/Low</button>
+		</div>
+		</div>
+		<div id="resultsDiv">
+			<p id="forecastDays"></p>
+			<div id="copyButtonDiv">
+				<button onclick="copyText()">Copy Text</button>
+				<button id="downloadTextButton" onclick="downloadTextFile()">Download Text</button>
+			</div>
+			<div><p id="textCopiedVerification">Text has been copied. Paste as plain text in Illustrator.</p></div>
+			<div id="loader" class="loader"></div>
+       <textarea readonly rows="10" cols="50" value="" id="dataText"></textarea>
+		</div>
+	</body>
+</html>
